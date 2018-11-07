@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Util.Gyro;
  * Created by Sumanth on 10/2/18.
  */
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "telelelelele", group = "")
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "telele", group = "")
 public class TeleOp extends OpMode {
 
     Robot robot = new Robot();
@@ -20,7 +20,7 @@ public class TeleOp extends OpMode {
 
 
         gyro.initGyro(hardwareMap);
-        robot.initTeleOp(hardwareMap, gyro);
+        robot.init(hardwareMap, gyro);
     }
 
     @Override
@@ -28,16 +28,24 @@ public class TeleOp extends OpMode {
 
         double leftVal = -gamepad1.left_stick_y;
         double rightVal = -gamepad1.right_stick_y;
+        double wristval = -gamepad2.right_stick_y/2.0;
+        double armval = -gamepad2.left_stick_y/2.0;
 
 
-        if(gamepad1.left_bumper && gamepad1.right_bumper){
+
+
+        if(gamepad1.left_bumper && gamepad1.right_bumper) {
 
             leftVal *= 0.3;
             rightVal *= -0.3;
         }
 
+
         robot.driveTrain.setLeftPower(leftVal);
         robot.driveTrain.setRightPower(rightVal);
+        robot.extender.setPower(wristval);
+        robot.arm.setPower(armval);
+
 
     }
 
@@ -46,5 +54,7 @@ public class TeleOp extends OpMode {
 
         robot.driveTrain.setLeftPower(0);
         robot.driveTrain.setRightPower(0);
+        robot.extender.setPower(0);
+        robot.arm.setPower(0);
     }
 }

@@ -13,13 +13,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class MineralDetectionUtil{
 
     private SamplingOrderDetector detector;
-    private LinearOpMode linearOpMode;
     private HardwareMap hardwareMap;
 
 
-    public MineralDetectionUtil(LinearOpMode linearOpMode, HardwareMap hardwareMap){
+    public MineralDetectionUtil(HardwareMap hardwareMap){
 
-        this.linearOpMode = linearOpMode;
         this.hardwareMap = hardwareMap;
 
 
@@ -49,6 +47,7 @@ public class MineralDetectionUtil{
     public String getMineralPos(){
 
         return detector.getCurrentOrder().toString();
+
 
     }
 

@@ -18,7 +18,7 @@ public class EncoderTest extends LinearOpMode {
         Robot robot = new Robot();
         Gyro gyro = new Gyro();
         gyro.initGyro(hardwareMap);
-        robot.initTeleOp(hardwareMap, gyro);
+        robot.init(hardwareMap, gyro);
 
         int i = 0;
 

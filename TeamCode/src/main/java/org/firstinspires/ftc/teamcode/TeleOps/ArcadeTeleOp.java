@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOps;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.*;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.Util.Gyro;
@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.Util.Gyro;
  * Created by Sumanth on 10/29/18.
  */
 
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "TeleOpMotors",group = "")
 public class ArcadeTeleOp extends OpMode {
 
     Robot robot = new Robot();
@@ -32,7 +33,24 @@ public class ArcadeTeleOp extends OpMode {
         robot.driveTrain.setLeftPower(lpwr);
         robot.driveTrain.setRightPower(rpwr);
 
+        if (Math.abs(gamepad2.left_stick_y) > 0.1) {
 
+            robot.arm.setPower(-gamepad2.left_stick_y / 2.0);
+
+        }
+        if (Math.abs(gamepad2.right_stick_y) > 0.1) {
+            robot.extender.setPower(-gamepad2.right_stick_y / 2.0);
+        }
+        if (gamepad1.a)
+            robot.arm.setPower1();
+        else if(gamepad1.b)
+            robot.arm.setPower2();
+        else if(gamepad2.y)
+            robot.arm.setPower3();
+        if(gamepad2.right_bumper)
+            robot.extender.setPower(0.5);
+        else if(gamepad2.left_bumper)
+            robot.extender.setPower(-0.5);
     }
 
     @Override

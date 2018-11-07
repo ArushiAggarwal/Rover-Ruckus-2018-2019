@@ -18,7 +18,7 @@ public class gyroTest extends LinearOpMode {
         Gyro gyro = new Gyro();
 
         gyro.initGyro(hardwareMap);
-        robot.initTeleOp(hardwareMap, gyro);
+        robot.init(hardwareMap, gyro);
 
         waitForStart();
         if(opModeIsActive())

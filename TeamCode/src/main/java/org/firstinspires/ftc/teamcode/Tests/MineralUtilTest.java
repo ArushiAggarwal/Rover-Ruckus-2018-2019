@@ -18,7 +18,7 @@ public class MineralUtilTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        MineralDetectionUtil detectionUtil = new MineralDetectionUtil(this, hardwareMap);
+        MineralDetectionUtil detectionUtil = new MineralDetectionUtil(hardwareMap);
 
         detectionUtil.init();
 

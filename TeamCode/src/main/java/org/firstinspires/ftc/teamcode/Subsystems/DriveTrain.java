@@ -15,7 +15,6 @@ import org.firstinspires.ftc.teamcode.Util.PIDLoop;
 
 public class DriveTrain implements SubsystemTemplate
 {
-    private LinearOpMode opMode;
 
     private DcMotor l1;
     private DcMotor l2;
@@ -95,30 +94,29 @@ public class DriveTrain implements SubsystemTemplate
         r2motorIndex = ((DcMotorEx)r2).getPortNumber();
     }
 
-    public DriveTrain(HardwareMap hardwareMap, LinearOpMode opMode)
-    {
-        l1 = hardwareMap.dcMotor.get("l1");
-        l2 = hardwareMap.dcMotor.get("l2");
-        r1 = hardwareMap.dcMotor.get("r1");
-        r2 = hardwareMap.dcMotor.get("r2");
-
-        setDrive(Drive.SPEED);
-
-        l1.setDirection(DcMotorSimple.Direction.REVERSE);
-        l2.setDirection(DcMotorSimple.Direction.REVERSE);
-        r1.setDirection(DcMotorSimple.Direction.FORWARD);
-        r2.setDirection(DcMotorSimple.Direction.FORWARD);
-
-        setSpeedController(DriveSpeedController.BRAKE);
-
-        l1motorControllerEx = (DcMotorControllerEx)l1.getController();
-        l2motorControllerEx = (DcMotorControllerEx)l2.getController();
-        r1motorControllerEx = (DcMotorControllerEx)r1.getController();
-        r2motorControllerEx = (DcMotorControllerEx)r2.getController();
-
-        setDrive(Drive.STOP_RESET);
-        this.opMode = opMode;
-    }
+//    public DriveTrain(HardwareMap hardwareMap)
+//    {
+//        l1 = hardwareMap.dcMotor.get("l1");
+//        l2 = hardwareMap.dcMotor.get("l2");
+//        r1 = hardwareMap.dcMotor.get("r1");
+//        r2 = hardwareMap.dcMotor.get("r2");
+//
+//        setDrive(Drive.SPEED);
+//
+//        l1.setDirection(DcMotorSimple.Direction.REVERSE);
+//        l2.setDirection(DcMotorSimple.Direction.REVERSE);
+//        r1.setDirection(DcMotorSimple.Direction.FORWARD);
+//        r2.setDirection(DcMotorSimple.Direction.FORWARD);
+//
+//        setSpeedController(DriveSpeedController.BRAKE);
+//
+//        l1motorControllerEx = (DcMotorControllerEx)l1.getController();
+//        l2motorControllerEx = (DcMotorControllerEx)l2.getController();
+//        r1motorControllerEx = (DcMotorControllerEx)r1.getController();
+//        r2motorControllerEx = (DcMotorControllerEx)r2.getController();
+//
+//        setDrive(Drive.STOP_RESET);
+//    }
 
     public void setGyro(Gyro gyro)
     {
@@ -360,10 +358,25 @@ public class DriveTrain implements SubsystemTemplate
             return true;
         }
 
-        this.opMode.telemetry.addData("Side", String.valueOf(side));
-        this.opMode.telemetry.update();
 
         return false;
+
+    }
+
+    public void alignToGold(double dir){
+
+        if(dir > 0){
+
+            setLeftPower(0.2);
+            setRightPower(-0.2);
+
+        }
+        if(dir < 0){
+
+            setLeftPower(-0.2);
+            setRightPower(0.2);
+
+        }
 
     }
 
