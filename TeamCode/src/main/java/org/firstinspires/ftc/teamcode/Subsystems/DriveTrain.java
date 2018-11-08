@@ -365,16 +365,16 @@ public class DriveTrain implements SubsystemTemplate
 
     public void alignToGold(double dir){
 
-        if(dir > 0){
+        if(dir - 225 > 0){
 
-            setLeftPower(0.2);
-            setRightPower(-0.2);
+            setLeftPower(0.05);
+            setRightPower(-0.05);
 
         }
-        if(dir < 0){
+        if(dir - 225 < 0){
 
-            setLeftPower(-0.2);
-            setRightPower(0.2);
+            setLeftPower(-0.05);
+            setRightPower(0.05);
 
         }
 

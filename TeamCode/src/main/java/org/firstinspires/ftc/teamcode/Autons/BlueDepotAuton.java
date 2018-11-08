@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autons;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.Util.Gyro;
  * Created by Sumanth on 11/3/18.
  */
 
+@Autonomous(name = "BlueHomeDepot", group = "")
 public class BlueDepotAuton extends LinearOpMode {
 
     @Override
@@ -45,7 +47,7 @@ public class BlueDepotAuton extends LinearOpMode {
 
             if(mineralLocation.equals("LEFT")){
 
-                robot.driveTrain.rotateDeg(-115);
+                robot.driveTrain.rotateDeg(-25);
                 robot.driveTrain.setMoveDist(46);
                 robot.driveTrain.rotateDeg(110);
                 robot.driveTrain.setMoveDist(48);
@@ -54,7 +56,7 @@ public class BlueDepotAuton extends LinearOpMode {
             }
             else if(mineralLocation.equals("RIGHT")){
 
-                robot.driveTrain.rotateDeg(-65);
+                robot.driveTrain.rotateDeg(25);
                 robot.driveTrain.setMoveDist(46);
                 robot.driveTrain.rotateDeg(-110);
                 robot.driveTrain.setMoveDist(48);
@@ -62,7 +64,6 @@ public class BlueDepotAuton extends LinearOpMode {
             }
             else {
 
-                robot.driveTrain.rotateDeg(-90);
                 robot.driveTrain.setMoveDist(68);
 
             }

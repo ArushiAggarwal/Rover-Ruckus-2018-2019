@@ -24,8 +24,8 @@ public class Robot
 
         goldUtil = new GoldAlignUtil(hardwareMap);
 
-        extender = new Extender(hardwareMap);
-        arm = new Arm(hardwareMap);
+//        extender = new Extender(hardwareMap);
+//        arm = new Arm(hardwareMap);
     }
 
 }
