@@ -9,8 +9,7 @@ import org.firstinspires.ftc.teamcode.Util.Gyro;
 /**
  * Created by Sumanth on 10/2/18.
  */
-@Disabled
-@TeleOp(name = "enc", group = "")
+@Autonomous(name = "enc", group = "")
 public class EncoderTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {

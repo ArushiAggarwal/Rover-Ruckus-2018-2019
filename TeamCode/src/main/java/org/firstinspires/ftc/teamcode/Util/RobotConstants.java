@@ -5,7 +5,7 @@ public class RobotConstants
     private final double WHEEL_DIAMETER = 4;
     private final double WHEEL_CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
 
-    private final int DRIVE_TOLERANCE = 50;
+    private final int DRIVE_TOLERANCE = 100;
     private final double TURN_TOLERANCE = 1;
     //TODO: TEST FOR VALS
     public final int ENCODER_TICKS_PER_REVOLUTION = 697;

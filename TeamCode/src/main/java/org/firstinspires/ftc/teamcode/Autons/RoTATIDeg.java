@@ -21,9 +21,13 @@ public class RoTATIDeg extends LinearOpMode{
         gyro.initGyro(hardwareMap);
         robot.init(hardwareMap, gyro);
 
+        telemetry.addData("yaw", robot.driveTrain.gyro.getYaw());
+        telemetry.update();
+
         waitForStart();
         if (opModeIsActive()){
-            robot.driveTrain.rotateDeg(90);
+            telemetry.update();
+            robot.driveTrain.rotaTITIDeg(90);
 
         }
 

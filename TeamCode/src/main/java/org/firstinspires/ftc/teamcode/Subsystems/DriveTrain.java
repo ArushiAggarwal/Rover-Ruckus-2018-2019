@@ -231,6 +231,8 @@ public class DriveTrain implements SubsystemTemplate
     public boolean setMoveDist(double dist)
     {
 
+        setDrive(Drive.STOP_RESET);
+
         setSpeedController(DriveSpeedController.BRAKE);
 
         leftTarget = (int) (dist * constant.getTICKS_PER_INCH());
@@ -361,6 +363,31 @@ public class DriveTrain implements SubsystemTemplate
 
         return false;
 
+    }
+
+    public void rotaTITIDeg(double target) {
+
+        turnTarget = heading + target;
+
+        if (turnTarget > 180)
+            turnTarget -= 360;
+        else if (turnTarget < -180)
+            turnTarget += 360;
+
+        setDrive(Drive.SPEED);
+        setSpeedController(DriveSpeedController.BRAKE);
+        turnCL.setTarget(turnTarget);
+        double lpwr = 0.2;
+
+
+
+        while ((Math.abs(turnTarget) - Math.abs(heading)) > 2) {
+
+            setRightPower(-(lpwr * Math.signum(heading - turnTarget)));
+            setLeftPower((lpwr * Math.signum(heading - turnTarget)));
+
+
+        }
     }
 
     public void alignToGold(double dir){

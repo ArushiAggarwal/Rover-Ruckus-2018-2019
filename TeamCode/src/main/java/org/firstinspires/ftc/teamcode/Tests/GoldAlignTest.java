@@ -49,11 +49,11 @@ public class GoldAlignTest extends LinearOpMode {
             storeHeading = gyro.getYaw()-storeHeading;
 
             if(storeHeading > -10){
-                robot.driveTrain.rotateDeg(90 - storeHeading);
+                robot.driveTrain.rotaTITIDeg(90 - storeHeading);
                 robot.driveTrain.setMoveDist(Math.sqrt(68*68 + 50*50 - 2*68*50* Math.cos(storeHeading)));
             }
             else if(storeHeading > 10){
-                robot.driveTrain.rotateDeg(-90 + storeHeading);
+                robot.driveTrain.rotaTITIDeg(-90 + storeHeading);
                 robot.driveTrain.setMoveDist(Math.sqrt(68*68 + 50*50 - 2*68*50* Math.cos(storeHeading)));
             }
             else{
