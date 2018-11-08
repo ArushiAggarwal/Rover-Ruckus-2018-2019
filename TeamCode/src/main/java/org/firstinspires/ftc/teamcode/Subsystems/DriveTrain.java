@@ -304,8 +304,8 @@ public class DriveTrain implements SubsystemTemplate
             lpwr = 0.25 * Math.signum(target);
         if(Math.abs(lpwr)<0.07)
             isPowerTooLow = true;
-        setLeftPower(lpwr);
-        setRightPower(-lpwr);
+        setLeftPower(0.1);
+        setRightPower(-0.1);
 
         if((Math.abs((gyro.getYaw()-turnTarget))<constant.getTurnTolerance())
                 && isPowerTooLow)

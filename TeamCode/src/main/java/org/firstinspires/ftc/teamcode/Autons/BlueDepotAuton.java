@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
+import org.firstinspires.ftc.teamcode.Util.GoldAlignUtil;
 import org.firstinspires.ftc.teamcode.Util.Gyro;
 
 /**
@@ -20,60 +21,41 @@ public class BlueDepotAuton extends LinearOpMode {
         Robot robot = new Robot();
         Gyro gyro = new Gyro();
 
+        gyro.initGyro(hardwareMap);
         robot.init(hardwareMap, gyro);
 
-        String mineralLocation = "";
+        GoldAlignUtil alignUtil = new GoldAlignUtil(hardwareMap);
 
-        ElapsedTime timer = new ElapsedTime();
-
-        while(!opModeIsActive()){
-
-            mineralLocation = robot.detectionUtil.getMineralPos();
-
-        }
-
+        alignUtil.init();
 
 
         waitForStart();
         if(opModeIsActive()){
 
-            timer.startTime();
+//            telemetry.addData("pos", alignUtil.getXPos());
+//            telemetry.addData("Is Aligned", alignUtil.isAligned());
 
-            while(mineralLocation.equals("UNKNOWN") && timer.milliseconds() < 5000){
+            while (!alignUtil.isAligned() && opModeIsActive()){
 
-                mineralLocation = robot.detectionUtil.getMineralPos();
-
-            }
-
-            if(mineralLocation.equals("LEFT")){
-
-                robot.driveTrain.rotateDeg(-25);
-                robot.driveTrain.setMoveDist(46);
-                robot.driveTrain.rotateDeg(110);
-                robot.driveTrain.setMoveDist(48);
-
-
-            }
-            else if(mineralLocation.equals("RIGHT")){
-
-                robot.driveTrain.rotateDeg(25);
-                robot.driveTrain.setMoveDist(46);
-                robot.driveTrain.rotateDeg(-110);
-                robot.driveTrain.setMoveDist(48);
-
-            }
-            else {
-
-                robot.driveTrain.setMoveDist(68);
+                robot.driveTrain.alignToGold(alignUtil.getXPos());
 
             }
 
+            robot.driveTrain.setMoveDist(50);
 
 
 
 
 
         }
+
+
+
+
+
+
+
+
 
     }
 }
