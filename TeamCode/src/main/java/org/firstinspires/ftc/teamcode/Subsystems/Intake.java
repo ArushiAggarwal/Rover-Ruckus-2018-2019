@@ -11,13 +11,18 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Intake implements SubsystemTemplate {
 
-    private CRServo intake;
+    private CRServo leftIntake;
+    private CRServo rightIntake;
 
     public Intake(HardwareMap hardwareMap){
 
-        intake = hardwareMap.crservo.get("intake");
+        leftIntake = hardwareMap.crservo.get("leftIntake");
+        rightIntake = hardwareMap.crservo.get("rightIntake");
 
-        intake.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        leftIntake.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightIntake.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
     }
 
@@ -52,13 +57,13 @@ public class Intake implements SubsystemTemplate {
 
     public void intake(){
 
-        setPower(1);
+        setPower(0.5);
 
     }
 
     public void outtake(){
 
-        setPower(-1);
+        setPower(-0.5);
 
     }
 
@@ -70,7 +75,8 @@ public class Intake implements SubsystemTemplate {
 
     public void setPower(double pwr){
 
-        intake.setPower(pwr);
+        leftIntake.setPower(pwr);
+        rightIntake.setPower(pwr);
 
     }
 

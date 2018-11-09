@@ -15,7 +15,7 @@ public class Extender {
     public Extender(HardwareMap hardwareMap) {
         extender = hardwareMap.dcMotor.get("extender");
 
-        extender.setDirection(DcMotorSimple.Direction.FORWARD);
+        extender.setDirection(DcMotorSimple.Direction.REVERSE);
         extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         extender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
