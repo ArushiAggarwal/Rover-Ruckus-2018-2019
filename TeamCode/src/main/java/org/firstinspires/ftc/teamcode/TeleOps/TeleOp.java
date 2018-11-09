@@ -46,7 +46,6 @@ public class TeleOp extends OpMode {
         robot.extender.setPower(wristval);
         robot.arm.setPower(armval);
 
-
     }
 
     @Override
