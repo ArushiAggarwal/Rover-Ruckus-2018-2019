@@ -29,6 +29,7 @@ public class BlueDepotAuton extends LinearOpMode {
         alignUtil.init();
 
 
+
         waitForStart();
         if(opModeIsActive()){
 
@@ -41,12 +42,18 @@ public class BlueDepotAuton extends LinearOpMode {
 
             }
 
-            robot.driveTrain.setMoveDist(50);
-
-
-
-
-
+            if(Math.abs(gyro.getYaw()) < 7.5)
+                robot.driveTrain.setMoveDist(40);
+            else if(gyro.getYaw() > 7.5){
+                robot.driveTrain.setMoveDist(48);
+                robot.driveTrain.rotaTITIDeg( - gyro.getYaw() - 45);
+                robot.driveTrain.setMoveDist(Math.sqrt(48*48 + 40*40 - 2*48*40*Math.cos(gyro.getYaw())));
+            }
+            else if(gyro.getYaw() < -7.5){
+                robot.driveTrain.setMoveDist(48);
+                robot.driveTrain.rotaTITIDeg( - gyro.getYaw() + 45);
+                robot.driveTrain.setMoveDist(Math.sqrt(48*48 + 40*40 - 2*48*40*Math.cos(gyro.getYaw())));
+            }
 
         }
 

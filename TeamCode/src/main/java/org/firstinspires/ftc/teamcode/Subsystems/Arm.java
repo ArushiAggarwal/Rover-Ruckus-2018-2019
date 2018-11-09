@@ -21,7 +21,7 @@ public class Arm {
 
         arm1.setDirection(DcMotorSimple.Direction.FORWARD);
         arm2.setDirection(DcMotorSimple.Direction.FORWARD);
-        arm3.setDirection(DcMotorSimple.Direction.FORWARD);
+        arm3.setDirection(DcMotorSimple.Direction.REVERSE);
 
         arm1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         arm2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

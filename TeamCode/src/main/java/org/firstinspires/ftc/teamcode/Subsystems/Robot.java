@@ -14,13 +14,17 @@ public class Robot
     public GoldAlignUtil goldUtil;
     public Extender extender;
     public Arm arm;
+    public Intake intake;
+    public Wrist wrist;
 
     public void init(HardwareMap hardwareMap, Gyro gyrofromOpMode)
     {
         driveTrain = new DriveTrain(hardwareMap);
         driveTrain.setGyro(gyrofromOpMode);
-//        extender = new Extender(hardwareMap);
-//        arm = new Arm(hardwareMap);
-    }
+        extender = new Extender(hardwareMap);
+        arm = new Arm(hardwareMap);
+        intake = new Intake(hardwareMap);
+        wrist = new Wrist(hardwareMap);
 
+    }
 }
