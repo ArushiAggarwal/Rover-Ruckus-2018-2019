@@ -29,6 +29,8 @@ public class DriveTrain implements SubsystemTemplate
 
     private double heading;
 
+    private LinearOpMode opMode;
+
     //TODO: ENTER Kp, Ki, Kd
     private PIDLoop driveCL = new PIDLoop(1,0,0);
 
@@ -92,6 +94,7 @@ public class DriveTrain implements SubsystemTemplate
         l2motorIndex = ((DcMotorEx)l2).getPortNumber();
         r1motorIndex = ((DcMotorEx)r1).getPortNumber();
         r2motorIndex = ((DcMotorEx)r2).getPortNumber();
+
     }
 
 //    public DriveTrain(HardwareMap hardwareMap)
@@ -193,6 +196,7 @@ public class DriveTrain implements SubsystemTemplate
     public void setRightTarget(int target) {
         r1.setTargetPosition(target);
         r2.setTargetPosition(target);
+
     }
 
     public int getRightTarget(){
@@ -230,26 +234,28 @@ public class DriveTrain implements SubsystemTemplate
 
     public boolean setMoveDist(double dist)
     {
-
         setDrive(Drive.STOP_RESET);
-
         setSpeedController(DriveSpeedController.BRAKE);
 
         leftTarget = (int) (dist * constant.getTICKS_PER_INCH());
-        rightTarget = (int) (dist * constant.getTICKS_PER_INCH());
 
         setDrive(Drive.ENCODERS);
 
         setLeftTarget(leftTarget);
-        setRightTarget(rightTarget);
+        setRightTarget(leftTarget);
 
         driveCL.setTarget(leftTarget);
 
-//        double pwr = driveCL.pLoop(getLeftCurrentPosition());
-        setLeftPower(0.5);
-        setRightPower(0.5);
+        double pwr = driveCL.pLoop(getLeftCurrentPosition());
+        while ((Math.abs(((getLeftCurrentPosition())-leftTarget))>constant.getDRIVE_TOLERANCE())){
 
-        if((Math.abs((getLeftCurrentPosition()-leftTarget))<constant.getDRIVE_TOLERANCE()))
+            setRightPower(0.5);
+            setLeftPower(0.5);
+
+        }
+
+
+        if((Math.abs(((getLeftCurrentPosition())-leftTarget))<constant.getDRIVE_TOLERANCE()))
         {
             setLeftPower(0);
             setRightPower(0);
@@ -367,7 +373,7 @@ public class DriveTrain implements SubsystemTemplate
 
     public void rotaTITIDeg(double target) {
 
-        turnTarget = heading + target;
+        turnTarget = gyro.getYaw() + target;
 
         if (turnTarget > 180)
             turnTarget -= 360;
@@ -381,10 +387,17 @@ public class DriveTrain implements SubsystemTemplate
 
 
 
-        while ((Math.abs(turnTarget) - Math.abs(heading)) > 2) {
+        while ((Math.abs(turnTarget) - Math.abs(gyro.getYaw())) > 25) {
 
-            setRightPower(-(lpwr * Math.signum(heading - turnTarget)));
-            setLeftPower((lpwr * Math.signum(heading - turnTarget)));
+            setRightPower((0.2 * Math.signum(gyro.getYaw() - turnTarget)));
+            setLeftPower(-(0.2 * Math.signum(gyro.getYaw() - turnTarget)));
+
+
+        }
+        while ((Math.abs(turnTarget) - Math.abs(gyro.getYaw())) > 0.05) {
+
+            setRightPower((0.01 * Math.signum(gyro.getYaw() - turnTarget)));
+            setLeftPower(-(0.01 * Math.signum(gyro.getYaw() - turnTarget)));
 
 
         }

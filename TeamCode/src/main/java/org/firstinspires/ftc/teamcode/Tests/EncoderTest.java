@@ -22,17 +22,17 @@ public class EncoderTest extends LinearOpMode {
         int i = 0;
 
         waitForStart();
-        while(opModeIsActive()){
+        while (opModeIsActive()){
 
-            if(i == 0){
-
-                robot.driveTrain.setMoveDist(25);
-                i++;
-
-            }
-
-            telemetry.addData("dt", robot.driveTrain.display());
+            telemetry.addData("y", gyro.getYaw());
+            telemetry.addData("z", robot.driveTrain.gyro.getYaw());
             telemetry.update();
+//            if(i == 0){
+//
+//                robot.driveTrain.setMoveDist(25);
+//                i++;
+//
+//            }
 
         }
 

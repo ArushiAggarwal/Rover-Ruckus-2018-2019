@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Util.GoldAlignUtil;
@@ -18,12 +19,6 @@ public class Robot
     {
         driveTrain = new DriveTrain(hardwareMap);
         driveTrain.setGyro(gyrofromOpMode);
-
-        detectionUtil = new MineralDetectionUtil(hardwareMap);
-        detectionUtil.init();
-
-        goldUtil = new GoldAlignUtil(hardwareMap);
-
 //        extender = new Extender(hardwareMap);
 //        arm = new Arm(hardwareMap);
     }
