@@ -36,24 +36,46 @@ public class BlueDepotAuton extends LinearOpMode {
 //            telemetry.addData("pos", alignUtil.getXPos());
 //            telemetry.addData("Is Aligned", alignUtil.isAligned());
 
+            //LANDER CODE
+//            robot.arm.setPower(0.3);
+//            sleep(1500);
+//            robot.arm.setPower(0);
+//
+//            robot.driveTrain.rotaTITIDeg(20);
+
             while (!alignUtil.isAligned() && opModeIsActive()){
 
                 robot.driveTrain.alignToGold(alignUtil.getXPos());
 
             }
 
-            if(Math.abs(gyro.getYaw()) < 7.5)
+            if(Math.abs(gyro.getYaw()) < 7.5){
                 robot.driveTrain.setMoveDist(40);
-            else if(gyro.getYaw() > 7.5){
+
+
+            }else if(gyro.getYaw() > 7.5){
                 robot.driveTrain.setMoveDist(48);
                 robot.driveTrain.rotaTITIDeg( - gyro.getYaw() - 45);
                 robot.driveTrain.setMoveDist(Math.sqrt(48*48 + 40*40 - 2*48*40*Math.cos(gyro.getYaw())));
+
             }
             else if(gyro.getYaw() < -7.5){
                 robot.driveTrain.setMoveDist(48);
                 robot.driveTrain.rotaTITIDeg( - gyro.getYaw() + 45);
                 robot.driveTrain.setMoveDist(Math.sqrt(48*48 + 40*40 - 2*48*40*Math.cos(gyro.getYaw())));
+
             }
+
+            //OUTTAKE MARKER
+            robot.intake.outtake();
+            sleep(2000);
+            robot.intake.setPower(0);
+
+            //PARK
+
+            robot.driveTrain.rotaTITIDeg(-gyro.getYaw() + 110);
+            robot.driveTrain.setMoveDist(24*5.5);
+
 
         }
 
