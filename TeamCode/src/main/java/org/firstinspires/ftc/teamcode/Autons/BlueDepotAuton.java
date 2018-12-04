@@ -30,6 +30,7 @@ public class BlueDepotAuton extends LinearOpMode {
 
 
 
+
         waitForStart();
         if(opModeIsActive()){
 
