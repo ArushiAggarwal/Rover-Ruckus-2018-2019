@@ -21,6 +21,7 @@ public class DriveTrain implements SubsystemTemplate
     private DcMotor r1;
     private DcMotor r2;
     public Gyro gyro;
+    
 
     private int leftTarget;
     private int rightTarget;
@@ -387,14 +388,14 @@ public class DriveTrain implements SubsystemTemplate
 
 
 
-        while ((Math.abs(turnTarget) - Math.abs(gyro.getYaw())) > 25) {
+        while (Math.abs((turnTarget) - (gyro.getYaw())) > 25) {
 
             setRightPower((0.2 * Math.signum(gyro.getYaw() - turnTarget)));
             setLeftPower(-(0.2 * Math.signum(gyro.getYaw() - turnTarget)));
 
 
         }
-        while ((Math.abs(turnTarget) - Math.abs(gyro.getYaw())) > 0.05) {
+        while (Math.abs((turnTarget) - (gyro.getYaw())) > 0.05) {
 
             setRightPower((0.01 * Math.signum(gyro.getYaw() - turnTarget)));
             setLeftPower(-(0.01 * Math.signum(gyro.getYaw() - turnTarget)));
@@ -405,13 +406,13 @@ public class DriveTrain implements SubsystemTemplate
 
     public void alignToGold(double dir){
 
-        if(dir - 225 > 0){
+        if(dir - 250 > 0){
 
             setLeftPower(0.05);
             setRightPower(-0.05);
 
         }
-        if(dir - 225 < 0){
+        if(dir - 250 < 0){
 
             setLeftPower(-0.05);
             setRightPower(0.05);

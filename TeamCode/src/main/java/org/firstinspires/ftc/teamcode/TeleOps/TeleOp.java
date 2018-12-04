@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOps;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.Util.Gyro;
  * Created by Sumanth on 10/2/18.
  */
 
+@Disabled
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "telele", group = "")
 public class TeleOp extends OpMode {
 
@@ -45,6 +47,7 @@ public class TeleOp extends OpMode {
         robot.driveTrain.setRightPower(rightVal);
         robot.extender.setPower(wristval);
         robot.arm.setPower(armval);
+
 
     }
 

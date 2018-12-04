@@ -14,19 +14,21 @@ public class Wrist implements SubsystemTemplate {
     public Wrist(HardwareMap hardwareMap){
 
         wrist = hardwareMap.servo.get("mover");
-        wrist.setPosition(0);
 //        wrist.setDirection(Servo.Direction.REVERSE);
 
     }
     public void intakePos(){
 
-        wrist.setPosition(0.75);
+        wrist.setPosition(0.5);
 
     }
-    public void outtakePos(){
+    public void backOuttakePos(){
 
-        wrist.setPosition(0);
+        wrist.setPosition(0.1);
 
+    }
+    public void frontOuttakePos(){
+        wrist.setPosition(1);
     }
 
     @Override

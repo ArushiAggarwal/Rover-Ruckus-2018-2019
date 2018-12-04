@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autons;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.Util.Gyro;
 /**
  * Created by Sumanth on 11/7/18.
  */
+@Disabled
 @Autonomous(name = "RoTATI Deg")
 public class RoTATIDeg extends LinearOpMode{
 

@@ -31,10 +31,12 @@ package org.firstinspires.ftc.teamcode.CVStuff;
 
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
+@Disabled
 @TeleOp(name="Generic AparnaCV")
 
 public class GenericGoldDetectorTest extends OpMode

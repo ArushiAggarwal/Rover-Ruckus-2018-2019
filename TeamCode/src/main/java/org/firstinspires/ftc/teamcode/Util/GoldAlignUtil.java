@@ -33,7 +33,7 @@ public class GoldAlignUtil {
 
         // Optional Tuning
         detector.alignSize = 100; // How wide (in pixels) is the range in which the gold object will be aligned. (Represented by green bars in the preview)
-        detector.alignPosOffset = -25; // How far from center frame to offset this alignment zone.
+        detector.alignPosOffset = -50; // How far from center frame to offset this alignment zone.
         detector.downscale = 0.4; // How much to downscale the input frames
 
         detector.areaScoringMethod = DogeCV.AreaScoringMethod.MAX_AREA; // Can also be PERFECT_AREA
